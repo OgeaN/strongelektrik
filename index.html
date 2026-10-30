@@ -2,11 +2,99 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Strong Elektrik</title>
-  <meta http-equiv="refresh" content="0; url=./teklif-panel/">
-  <link rel="canonical" href="./teklif-panel/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Strong Elektrik — Teklif Paneli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="teklif-panel/style.css">
 </head>
 <body>
-  <p>Yönlendiriliyor… <a href="./teklif-panel/">Teklif Paneli</a></p>
+  <header class="topbar">
+    <img id="topLogo" class="topbar-logo" alt="Strong Elektrik">
+    <span class="topbar-title">Teklif Paneli</span>
+    <span class="badge">DEMO</span>
+    <div class="topbar-actions">
+      <button class="btn ghost" id="btnSample" title="Örnek inşaat teklifini yükle">Örnek Veri</button>
+      <button class="btn ghost" id="btnNew" title="Boş teklif oluştur">Yeni Teklif</button>
+      <button class="btn ghost" id="btnPrint">Yazdır</button>
+      <button class="btn" id="btnPng">PNG İndir</button>
+      <button class="btn primary" id="btnPdf">PDF İndir</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="editor">
+      <div class="card">
+        <h2>Müşteri &amp; Belge Bilgileri</h2>
+        <div class="grid2">
+          <label>Firma / Müşteri<input data-f="firma"></label>
+          <label>Proje / Şantiye<input data-f="proje"></label>
+          <label class="span2">Adres<input data-f="adres"></label>
+          <label>Telefon<input data-f="telefon"></label>
+          <label>E-posta<input data-f="eposta"></label>
+          <label>Belge No<input data-f="belgeNo"></label>
+          <label>Tarih<input type="date" data-f="tarih"></label>
+          <label>Geçerlilik (gün)<input type="number" min="1" data-f="gecerlilik"></label>
+          <label>Hazırlayan<input data-f="hazirlayan"></label>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h2>Kalemler <span id="itemCount" class="muted"></span></h2>
+          <div class="seg" id="allOpen" title="Tüm kartları aç / kapat">
+            <label><input type="radio" name="allOpen" value="1"><span>Tümü Açık</span></label>
+            <label><input type="radio" name="allOpen" value="0"><span>Tümü Kapalı</span></label>
+          </div>
+        </div>
+        <div class="quick-add">
+          <select id="catalog"></select>
+          <button class="btn small dark" id="btnAddCatalog">Katalogdan Ekle</button>
+          <button class="btn small outline" id="btnAddEmpty">+ Boş Satır</button>
+        </div>
+        <div id="itemsBody" class="items"></div>
+      </div>
+
+      <div class="card">
+        <h2>Hesap &amp; Notlar</h2>
+        <div class="grid2">
+          <label>İskonto (%)<input type="number" min="0" max="100" step="0.5" data-f="iskonto"></label>
+          <label>KDV (%)
+            <select data-f="kdv">
+              <option value="0">%0</option>
+              <option value="1">%1</option>
+              <option value="10">%10</option>
+              <option value="20">%20</option>
+            </select>
+          </label>
+          <label class="span2">Teklif Notları<textarea rows="5" data-f="notlar"></textarea></label>
+        </div>
+        <div id="summary" class="summary"></div>
+      </div>
+    </section>
+
+    <section class="preview-col">
+      <div class="preview-toolbar">
+        <span>Önizleme · A4 <span id="pageCount" class="muted"></span></span>
+        <div class="zoom">
+          <button class="btn small outline" id="zoomOut" title="Uzaklaştır">−</button>
+          <span id="zoomVal">100%</span>
+          <button class="btn small outline" id="zoomIn" title="Yakınlaştır">+</button>
+          <button class="btn small outline" id="zoomFit">Sığdır</button>
+        </div>
+      </div>
+      <div class="preview-scroll" id="previewScroll">
+        <div id="preview" class="preview"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="teklif-panel/logo.js"></script>
+  <script src="teklif-panel/app.js"></script>
 </body>
 </html>
