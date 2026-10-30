@@ -387,3 +387,85 @@ textarea { resize: vertical; line-height: 1.45; }
   .topbar { height: auto; flex-wrap: wrap; padding: 10px 16px; }
   .topbar-actions { margin-left: 0; flex-wrap: wrap; }
 }
+
+/* =========================================================
+   Ön sunum (demo) modu — <body class="demo">
+   Özellikler silinmez, yalnızca gizlenir; sınıf kaldırılınca geri gelir.
+   ========================================================= */
+.demo-only { display: none !important; }
+.demo .demo-only { display: revert !important; }
+.demo .demo-hide { display: none !important; }
+
+/* Kalem kartları: açık / kapalı özelliği gizli, kartlar özet olarak kalır */
+.demo .item .seg,
+.demo .item-body { display: none !important; }
+.demo .item-title { pointer-events: none; }
+.demo .item.open { border-left-color: #c9cdd5; box-shadow: 0 1px 2px rgba(20, 22, 27, .04); }
+
+.soon-pill {
+  align-self: center;
+  border: 1px dashed #4a4f59;
+  color: #9aa0aa;
+  border-radius: 7px;
+  padding: 7px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.soon-pill b { color: var(--yellow); margin-left: 4px; }
+.soon-note {
+  margin: 12px 0 0;
+  padding: 9px 12px;
+  border-radius: 7px;
+  background: #fff8e1;
+  color: #5b4a12;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.soon-note b {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
+/* Belge içi "buraya … gelecek" alanları: çizgi / kutu yok, sadece metin */
+.ph {
+  color: #9aa0aa;
+  font-style: italic;
+  font-size: 10px;
+  text-align: center;
+}
+.doc-info td.ph { border: 0; background: #f7f7f8; padding: 9px 10px; }
+.ph-block {
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f7f7f8;
+  padding: 10px;
+  line-height: 1.5;
+}
+.demo .ph-block.demo-only { display: flex !important; }
+.ph-block small { font-size: 9px; }
+.ph-sign { margin-top: 10px; padding: 22px 10px; }
+.quick-add + .soon-note { margin: 0 0 10px; }
+
+/* Demo modunda Ctrl+P ile de belge yazdırılamasın / PDF'e kaydedilemesin */
+@media print {
+  body.demo > * { display: none !important; }
+  body.demo::after {
+    content: "Bu bir ön sunum sürümüdür; yazdırma ve PDF çıktısı yakında açılacaktır.";
+    display: block;
+    padding: 40px;
+    font: 600 16px "Inter", Arial, sans-serif;
+    color: #14161b;
+  }
+}

@@ -384,10 +384,11 @@
         <colgroup><col style="width:112px"><col><col style="width:90px"><col></colgroup>
         <tr><th>Firma İsmi</th><td colspan="3" class="strong">${esc(state.firma)}</td></tr>
         <tr><th>Proje / Şantiye</th><td colspan="3">${esc(state.proje)}</td></tr>
-        <tr><th>Adres</th><td colspan="3" class="tall">${esc(state.adres)}</td></tr>
-        <tr><th>Telefon</th><td>${esc(state.telefon)}</td><th>E-posta</th><td>${esc(state.eposta)}</td></tr>
+        <tr class="demo-hide"><th>Adres</th><td colspan="3" class="tall">${esc(state.adres)}</td></tr>
+        <tr class="demo-hide"><th>Telefon</th><td>${esc(state.telefon)}</td><th>E-posta</th><td>${esc(state.eposta)}</td></tr>
         <tr><th>Belge No</th><td class="strong">${esc(state.belgeNo)}</td><th>Tarih</th><td class="strong">${isoToTR(state.tarih)}</td></tr>
-        <tr><th>Hazırlayan</th><td>${esc(state.hazirlayan)}</td><th>Geçerlilik</th><td>${addDays(state.tarih, state.gecerlilik)}</td></tr>
+        <tr class="demo-hide"><th>Hazırlayan</th><td>${esc(state.hazirlayan)}</td><th>Geçerlilik</th><td>${addDays(state.tarih, state.gecerlilik)}</td></tr>
+        <tr class="demo-only"><td colspan="4" class="ph">Buraya adres, telefon, e-posta, hazırlayan ve geçerlilik bilgileri gelecek</td></tr>
       </table>`;
   }
 
@@ -429,18 +430,20 @@
     return `
       <div class="doc-tail">
         <div class="doc-sum-row">
-          <div class="doc-notes">
+          <div class="doc-notes demo-hide">
             <div class="doc-notes-title">TEKLİF NOTLARI</div>
             <div class="doc-notes-body">${esc(state.notlar)}</div>
           </div>
+          <div class="ph ph-block demo-only">Buraya teklif notları gelecek<br><small>(ödeme, teslim ve garanti koşulları)</small></div>
           <table class="doc-totals">${rows}</table>
         </div>
         <div class="doc-yazi"><b>Yalnız:</b> ${yaziyla(t.genel)}</div>
         <div class="doc-closing">SİPARİŞLERİNİZİ BEKLER, İŞLERİNİZDE BAŞARILAR DİLERİZ.</div>
-        <div class="doc-sign">
+        <div class="doc-sign demo-hide">
           <div><div class="sign-title">MÜŞTERİ ONAYI</div><div class="sign-box">Ad Soyad · Kaşe · İmza</div></div>
           <div><div class="sign-title">TEDARİKÇİ FİRMA</div><div class="sign-box">${esc(COMPANY.unvan)}<br>Kaşe · İmza</div></div>
         </div>
+        <div class="ph ph-block ph-sign demo-only">Buraya müşteri onayı ile firma kaşe ve imza alanı gelecek</div>
       </div>`;
   }
 

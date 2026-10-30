@@ -9,7 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="teklif-panel/style.css">
 </head>
-<body>
+<!-- Ön sunum modu: "demo" sınıfı kaldırılınca gizlenen tüm özellikler geri gelir -->
+<body class="demo">
   <header class="topbar">
     <img id="topLogo" class="topbar-logo" alt="Strong Elektrik">
     <span class="topbar-title">Teklif Paneli</span>
@@ -17,9 +18,10 @@
     <div class="topbar-actions">
       <button class="btn ghost" id="btnSample" title="Örnek inşaat teklifini yükle">Örnek Veri</button>
       <button class="btn ghost" id="btnNew" title="Boş teklif oluştur">Yeni Teklif</button>
-      <button class="btn ghost" id="btnPrint">Yazdır</button>
-      <button class="btn" id="btnPng">PNG İndir</button>
-      <button class="btn primary" id="btnPdf">PDF İndir</button>
+      <button class="btn ghost demo-hide" id="btnPrint">Yazdır</button>
+      <button class="btn demo-hide" id="btnPng">PNG İndir</button>
+      <button class="btn primary demo-hide" id="btnPdf">PDF İndir</button>
+      <span class="soon-pill demo-only" title="Ön sunumdan sonra açılacak">Yazdır · PDF · PNG çıktısı <b>Yakında</b></span>
     </div>
   </header>
 
@@ -30,20 +32,21 @@
         <div class="grid2">
           <label>Firma / Müşteri<input data-f="firma"></label>
           <label>Proje / Şantiye<input data-f="proje"></label>
-          <label class="span2">Adres<input data-f="adres"></label>
-          <label>Telefon<input data-f="telefon"></label>
-          <label>E-posta<input data-f="eposta"></label>
+          <label class="span2 demo-hide">Adres<input data-f="adres"></label>
+          <label class="demo-hide">Telefon<input data-f="telefon"></label>
+          <label class="demo-hide">E-posta<input data-f="eposta"></label>
           <label>Belge No<input data-f="belgeNo"></label>
           <label>Tarih<input type="date" data-f="tarih"></label>
-          <label>Geçerlilik (gün)<input type="number" min="1" data-f="gecerlilik"></label>
-          <label>Hazırlayan<input data-f="hazirlayan"></label>
+          <label class="demo-hide">Geçerlilik (gün)<input type="number" min="1" data-f="gecerlilik"></label>
+          <label class="demo-hide">Hazırlayan<input data-f="hazirlayan"></label>
         </div>
+        <p class="soon-note demo-only"><b>Yakında</b> Adres, telefon, e-posta, geçerlilik süresi ve hazırlayan bilgileri eklenecek.</p>
       </div>
 
       <div class="card">
         <div class="card-head">
           <h2>Kalemler <span id="itemCount" class="muted"></span></h2>
-          <div class="seg" id="allOpen" title="Tüm kartları aç / kapat">
+          <div class="seg demo-hide" id="allOpen" title="Tüm kartları aç / kapat">
             <label><input type="radio" name="allOpen" value="1"><span>Tümü Açık</span></label>
             <label><input type="radio" name="allOpen" value="0"><span>Tümü Kapalı</span></label>
           </div>
@@ -51,9 +54,11 @@
         <div class="quick-add">
           <select id="catalog"></select>
           <button class="btn small dark" id="btnAddCatalog">Katalogdan Ekle</button>
-          <button class="btn small outline" id="btnAddEmpty">+ Boş Satır</button>
+          <button class="btn small outline demo-hide" id="btnAddEmpty">+ Boş Satır</button>
         </div>
+        <p class="soon-note demo-only"><b>Yakında</b> Kendi kalemini oluştur: katalogda olmayan malzeme ve hizmetleri kod, birim ve fiyatıyla ekleyip kendi kataloğuna kaydedebileceksin.</p>
         <div id="itemsBody" class="items"></div>
+        <p class="soon-note demo-only"><b>Yakında</b> Kalem detaylarını açıp düzenleme (açık / kapalı kart görünümü), sıralama ve kopyalama.</p>
       </div>
 
       <div class="card">
@@ -68,8 +73,9 @@
               <option value="20">%20</option>
             </select>
           </label>
-          <label class="span2">Teklif Notları<textarea rows="5" data-f="notlar"></textarea></label>
+          <label class="span2 demo-hide">Teklif Notları<textarea rows="5" data-f="notlar"></textarea></label>
         </div>
+        <p class="soon-note demo-only"><b>Yakında</b> Ödeme, teslim ve garanti koşullarını içeren teklif notları.</p>
         <div id="summary" class="summary"></div>
       </div>
     </section>
